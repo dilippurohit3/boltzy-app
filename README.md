@@ -212,7 +212,7 @@ This software and associated documentation files (the "Software") are the exclus
 - **Documentation** - [Wiki](https://github.com/dilippurohit3/boltzy/wiki)
 - **Issues** - [GitHub Issues](https://github.com/dilippurohit3/boltzy/issues)
 - **Discussions** - [GitHub Discussions](https://github.com/dilippurohit3/boltzy/discussions)
-- **Email** - [dilippurohit3@gmail.com](mailto:dilippurohit3@gmail.com)
+- **Email** - [admin@boltzy.me](mailto:admin@boltzy.me)
 
 ## 🙏 Acknowledgments
 
@@ -228,5 +228,5 @@ This software and associated documentation files (the "Software") are the exclus
   <strong>Made with ⚡ by Dilippurohit3</strong>
   
   [![GitHub](https://img.shields.io/badge/GitHub-dilippurohit3-black?style=for-the-badge&logo=github)](https://github.com/dilippurohit3)
-  [![Email](https://img.shields.io/badge/Email-dilippurohit3@gmail.com-red?style=for-the-badge&logo=gmail)](mailto:dilippurohit3@gmail.com)
+  [![Email](https://img.shields.io/badge/Email-admin@boltzy.me-red?style=for-the-badge&logo=gmail)](mailto:admin@boltzy.me)
 </div>
