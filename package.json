@@ -14,7 +14,7 @@
   "dependencies": {
     "@emoji-mart/data": "^1.1.2",
     "@emoji-mart/react": "^1.1.1",
-    "@googleapis/youtube": "^8.0.2",
+    "@googleapis/youtube": "^29.0.0",
     "@stripe/stripe-js": "^1.54.2",
     "axios": "^1.6.5",
     "body-parser": "^1.20.2",
