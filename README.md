@@ -30,39 +30,430 @@ Boltzy is a modern, Netflix-inspired video synchronization platform that allows 
 
 ### Prerequisites
 
-- Node.js 18+ 
-- npm or yarn
-- PostgreSQL (for production)
-- Redis (for caching)
+- **Node.js 18+** - [Download from nodejs.org](https://nodejs.org/)
+- **npm or yarn** - Package manager (comes with Node.js)
+- **PostgreSQL 14+** - [Download from postgresql.org](https://www.postgresql.org/download/)
+- **Redis 6+** - [Download from redis.io](https://redis.io/download)
+- **Git** - [Download from git-scm.com](https://git-scm.com/downloads)
 
-### Installation
+### 📋 System Requirements
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/dilippurohit3/boltzy.git
-   cd boltzy
-   ```
+- **OS**: Windows 10+, macOS 10.15+, or Linux (Ubuntu 20.04+)
+- **RAM**: Minimum 4GB, Recommended 8GB+
+- **Storage**: At least 2GB free space
+- **Network**: Stable internet connection for real-time features
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+## 🛠️ Detailed Installation Guide
 
-3. **Set up environment variables**
-   ```bash
-   cp .env.example .env
-   # Edit .env with your configuration
-   ```
+### Step 1: Clone the Repository
 
-4. **Start the development server**
-   ```bash
-   npm run dev
-   ```
+```bash
+# Clone the repository
+git clone https://github.com/dilippurohit3/boltzy.git
+cd boltzy
 
-5. **Open your browser**
-   ```
-   http://localhost:3000
-   ```
+# Verify you're in the correct directory
+ls -la
+# You should see: package.json, src/, server/, public/, etc.
+```
+
+### Step 2: Install Dependencies
+
+```bash
+# Install all dependencies (this may take 2-5 minutes)
+npm install
+
+# Alternative with yarn (if you prefer yarn)
+yarn install
+```
+
+**Expected output:**
+```
+added 1234 packages, and audited 1234 packages in 45s
+found 0 vulnerabilities
+```
+
+### Step 3: Database Setup
+
+#### PostgreSQL Installation & Setup
+
+**Windows:**
+1. Download PostgreSQL from [postgresql.org](https://www.postgresql.org/download/windows/)
+2. Run the installer and follow the setup wizard
+3. Remember the password you set for the `postgres` user
+4. Open pgAdmin or use command line
+
+**macOS:**
+```bash
+# Using Homebrew
+brew install postgresql
+brew services start postgresql
+
+# Create a database
+createdb boltzy
+```
+
+**Linux (Ubuntu/Debian):**
+```bash
+# Install PostgreSQL
+sudo apt update
+sudo apt install postgresql postgresql-contrib
+
+# Start PostgreSQL service
+sudo systemctl start postgresql
+sudo systemctl enable postgresql
+
+# Create a database
+sudo -u postgres createdb boltzy
+```
+
+#### Redis Installation & Setup
+
+**Windows:**
+1. Download Redis from [github.com/microsoftarchive/redis](https://github.com/microsoftarchive/redis/releases)
+2. Extract and run `redis-server.exe`
+
+**macOS:**
+```bash
+# Using Homebrew
+brew install redis
+brew services start redis
+```
+
+**Linux (Ubuntu/Debian):**
+```bash
+# Install Redis
+sudo apt update
+sudo apt install redis-server
+
+# Start Redis service
+sudo systemctl start redis-server
+sudo systemctl enable redis-server
+```
+
+### Step 4: Environment Configuration
+
+```bash
+# Copy the environment template
+cp .env.example .env
+
+# Edit the environment file
+# Windows: notepad .env
+# macOS/Linux: nano .env
+```
+
+**Configure your `.env` file:**
+
+```env
+# Database Configuration
+DATABASE_URL=postgresql://username:password@localhost:5432/boltzy
+POSTGRES_HOST=localhost
+POSTGRES_PORT=5432
+POSTGRES_DB=boltzy
+POSTGRES_USER=your_username
+POSTGRES_PASSWORD=your_password
+
+# Redis Configuration
+REDIS_URL=redis://localhost:6379
+REDIS_HOST=localhost
+REDIS_PORT=6379
+
+# Server Configuration
+PORT=3000
+NODE_ENV=development
+
+# Firebase Configuration (for authentication)
+FIREBASE_API_KEY=your_firebase_api_key
+FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
+FIREBASE_PROJECT_ID=your_project_id
+FIREBASE_STORAGE_BUCKET=your_project.appspot.com
+FIREBASE_MESSAGING_SENDER_ID=123456789
+FIREBASE_APP_ID=1:123456789:web:abcdef
+
+# Stripe Configuration (for payments)
+STRIPE_PUBLIC_KEY=pk_test_your_stripe_public_key
+STRIPE_SECRET_KEY=sk_test_your_stripe_secret_key
+STRIPE_WEBHOOK_SECRET=whsec_your_webhook_secret
+
+# Discord Bot (optional)
+DISCORD_BOT_TOKEN=your_discord_bot_token
+
+# JWT Secret
+JWT_SECRET=your_super_secret_jwt_key_here
+
+# CORS Configuration
+CORS_ORIGIN=http://localhost:3000
+```
+
+### Step 5: Database Migration
+
+```bash
+# Run database migrations
+npm run migrate
+
+# Or manually run the SQL files
+psql -U postgres -d boltzy -f sql/schema.sql
+```
+
+### Step 6: Start the Development Server
+
+```bash
+# Start the development server
+npm run dev
+
+# Alternative commands:
+npm start          # Production mode
+npm run build      # Build for production
+npm run test       # Run tests
+```
+
+**Expected output:**
+```
+🚀 Boltzy server starting...
+📊 Database connected successfully
+🔴 Redis connected successfully
+🌐 Server running on http://localhost:3000
+⚡ Boltzy is ready!
+```
+
+### Step 7: Access the Application
+
+1. **Open your browser** and go to: `http://localhost:3000`
+2. **You should see** the Boltzy homepage with the Netflix-inspired design
+3. **Test the features:**
+   - Create a new room
+   - Test Netflix sync
+   - Try screen sharing
+   - Test chat functionality
+
+## 🔧 Development Setup
+
+### Hot Reload Development
+
+```bash
+# Start with hot reload (recommended for development)
+npm run dev
+
+# This will:
+# - Watch for file changes
+# - Automatically restart the server
+# - Show detailed error messages
+# - Enable debugging tools
+```
+
+### Debugging
+
+```bash
+# Start with debugging enabled
+npm run dev:debug
+
+# Or use VS Code debugger
+# Press F5 in VS Code to start debugging
+```
+
+### Testing
+
+```bash
+# Run all tests
+npm test
+
+# Run tests in watch mode
+npm run test:watch
+
+# Run specific test file
+npm test -- --grep "Netflix sync"
+```
+
+## 🐳 Docker Setup (Alternative)
+
+If you prefer Docker:
+
+```bash
+# Build the Docker image
+docker build -t boltzy .
+
+# Run with Docker Compose
+docker-compose up -d
+
+# This will start:
+# - PostgreSQL database
+# - Redis cache
+# - Boltzy application
+```
+
+## 🚀 Production Deployment
+
+### Environment Setup
+
+```bash
+# Set production environment
+export NODE_ENV=production
+
+# Use production database
+export DATABASE_URL=postgresql://user:pass@prod-db:5432/boltzy
+
+# Use production Redis
+export REDIS_URL=redis://prod-redis:6379
+```
+
+### Build and Deploy
+
+```bash
+# Build the application
+npm run build
+
+# Start production server
+npm start
+
+# Or use PM2 for process management
+npm install -g pm2
+pm2 start ecosystem.config.js
+```
+
+## 🆘 Troubleshooting
+
+### Common Issues
+
+**1. Database Connection Error:**
+```bash
+# Check if PostgreSQL is running
+pg_ctl status
+
+# Start PostgreSQL
+pg_ctl start
+```
+
+**2. Redis Connection Error:**
+```bash
+# Check if Redis is running
+redis-cli ping
+# Should return: PONG
+
+# Start Redis
+redis-server
+```
+
+**3. Port Already in Use:**
+```bash
+# Kill process using port 3000
+# Windows:
+netstat -ano | findstr :3000
+taskkill /PID <PID_NUMBER> /F
+
+# macOS/Linux:
+lsof -ti:3000 | xargs kill -9
+```
+
+**4. Permission Errors:**
+```bash
+# Fix npm permissions (macOS/Linux)
+sudo chown -R $(whoami) ~/.npm
+```
+
+### Getting Help
+
+- **Check logs**: Look at the console output for error messages
+- **Verify dependencies**: Run `npm install` again
+- **Check environment**: Ensure all `.env` variables are set correctly
+- **Database status**: Verify PostgreSQL and Redis are running
+- **Network issues**: Check firewall and port availability
+
+## 📱 Mobile Development
+
+For mobile development:
+
+```bash
+# Install mobile dependencies
+npm install -g @expo/cli
+
+# Start mobile development
+npm run mobile
+
+# This will start the Expo development server
+# Scan the QR code with Expo Go app
+```
+
+## 📦 Available Scripts
+
+### Development Scripts
+
+```bash
+# Start development server with hot reload
+npm run dev
+
+# Start development server with debugging
+npm run dev:debug
+
+# Start development server with verbose logging
+npm run dev:verbose
+```
+
+### Build Scripts
+
+```bash
+# Build for production
+npm run build
+
+# Build and analyze bundle size
+npm run build:analyze
+
+# Build for different environments
+npm run build:staging
+npm run build:production
+```
+
+### Testing Scripts
+
+```bash
+# Run all tests
+npm test
+
+# Run tests in watch mode
+npm run test:watch
+
+# Run tests with coverage
+npm run test:coverage
+
+# Run specific test suites
+npm run test:unit
+npm run test:integration
+npm run test:e2e
+```
+
+### Database Scripts
+
+```bash
+# Run database migrations
+npm run migrate
+
+# Rollback database migrations
+npm run migrate:rollback
+
+# Seed database with sample data
+npm run seed
+
+# Reset database (WARNING: Deletes all data)
+npm run db:reset
+```
+
+### Utility Scripts
+
+```bash
+# Lint code
+npm run lint
+
+# Fix linting issues
+npm run lint:fix
+
+# Format code
+npm run format
+
+# Check for security vulnerabilities
+npm audit
+
+# Update dependencies
+npm update
+```
 
 ## 🎯 How Netflix Sync Works
 
