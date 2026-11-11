@@ -5,7 +5,7 @@
   "description": "Watch videos together with friends anywhere. Netflix sync, YouTube, screen sharing, and more.",
   "keywords": ["video", "sync", "netflix", "youtube", "watchparty", "streaming", "chat", "webrtc"],
   "author": "Dilippurohit3 <admin@boltzy.me>",
-  "license": "Open-source",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/dilippurohit3/boltzy.git"
