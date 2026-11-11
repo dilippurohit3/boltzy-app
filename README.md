@@ -584,9 +584,9 @@ We welcome contributions to Boltzy! Please read our [Contributing Guidelines](CO
 
 ## 📄 License
 
-**All Rights Reserved** - This software is proprietary and confidential.
+**Open-Source** - This software is Open-source.
 
-Copyright (c) 2024 Dilippurohit3. All rights reserved.
+Copyright (c) 2024 Dilippurohit3. 
 
 This software and associated documentation files (the "Software") are the exclusive property of Dilippurohit3. The Software is protected by copyright laws and international treaties.
 
