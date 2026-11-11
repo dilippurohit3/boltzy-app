@@ -588,14 +588,6 @@ We welcome contributions to Boltzy! Please read our [Contributing Guidelines](CO
 
 Copyright (c) 2024 Dilippurohit3. 
 
-This software and associated documentation files (the "Software") are the exclusive property of Dilippurohit3. The Software is protected by copyright laws and international treaties.
-
-**No part of this Software may be:**
-- Copied, modified, or distributed without explicit written permission
-- Used for commercial purposes without a valid license
-- Reverse engineered, decompiled, or disassembled
-- Incorporated into other software without authorization
-
 **For licensing inquiries, please contact:** [dilippurohit3@gmail.com](mailto:dilippurohit3@gmail.com)
 
 ## 🆘 Support
